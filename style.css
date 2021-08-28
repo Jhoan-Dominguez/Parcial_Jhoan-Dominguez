@@ -1,0 +1,18 @@
+.body{
+    height: 100%;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    font-family: 'Brush Script MT', cursive;
+    color: black;
+    /* border: 1px solid black; */
+}
+
+.body-imagen{
+    margin: 5%;
+    height: 500px;
+    width: 80%;
+    background-image: url(./imagenes/store.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
