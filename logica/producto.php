@@ -70,6 +70,26 @@ class producto{
         $this -> productoDAO = new productoDAO($nombre, intval($precio), intval($categoria), $tallas, intval($cantidad));
     }
 
+    public function consultarTodos($filas, $pag){
+        $this -> conexion -> abrir(); 
+        // echo $this -> productoDAO -> consultarTodos($filas, $pag);
+        $this -> conexion -> ejecutar($this -> productoDAO -> consultarTodos($filas, $pag));
+        $productos = array();
+        while(($resultado = $this -> conexion -> extraer()) != null){
+            // var_dump($resultado);
+            array_push($productos, [$resultado[0], $resultado[1], $resultado[2], $resultado[8], $resultado[4], $resultado[6] ]);         
+        }
+        // var_dump($productos[0]);
+        $this -> conexion -> cerrar();
+        return $productos;
+    }
+
+    public function consultarTotalFilas(){
+        $this -> conexion -> abrir();        
+        $this -> conexion -> ejecutar($this -> productoDAO -> consultarTotalFilas());
+        return $this -> conexion -> extraer()[0];
+    }
+
     public function crear(){
         $this -> conexion -> abrir();
         // var_dump($this -> productoDAO);

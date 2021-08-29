@@ -25,7 +25,7 @@ class productoDAO{
     }
 
     public function consultarTodos($filas, $pag){
-        return "select * from producto inner join talla on producto.id_producto = talla.id_producto
+        return "select * from producto inner join talla on producto.id_producto = talla.id_producto inner join categoria on producto.id_categoria = categoria.id_categoria
                 order by producto.id_producto asc limit " . (($pag-1)*$filas) . ", " . $filas;
     }
 

@@ -9,7 +9,6 @@
     if(isset($_POST["crear"])){
         $cantidad = $_POST["cantidad"];
         if($cantidad){
-            echo $cantidad;
             for($i = 0; $i < $cantidad; $i++){
                 $product = new producto($_POST["nombre".$i], $_POST["precio".$i], $_POST["categoria".$i], $_POST["talla".$i], $_POST["cantidad_talla".$i]);
                 $product -> crear();
