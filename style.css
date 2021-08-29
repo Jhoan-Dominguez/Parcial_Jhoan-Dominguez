@@ -1,10 +1,14 @@
-.body{
+body{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.div-body{
     height: 100%;
     display: grid;
     align-items: center;
     justify-items: center;
-    font-family: 'Brush Script MT', cursive;
     color: black;
+
     /* border: 1px solid black; */
 }
 

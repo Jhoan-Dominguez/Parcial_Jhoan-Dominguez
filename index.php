@@ -1,8 +1,16 @@
 <?php
+require_once "logica/categoria.php";
+require_once "logica/producto.php";
+
   $opcion = 'default';
 
   if(isset($_GET["opcion"])){
     $opcion = $_GET["opcion"];
+  }
+
+  $pid = "";
+  if (isset($_GET["pid"])) {
+      $pid = base64_decode($_GET["pid"]);
   }
 
 ?>
@@ -50,11 +58,25 @@
       </div>
     </nav>
 
-    <div class="body">
-      <h1>Bienvenido a SPORT SHOP</h1>
-      <?php if ($opcion && $opcion=='default') {?>
+    <div class="div-body">
+      <h1 style=" font-family: 'Brush Script MT', cursive; ">Bienvenido a SPORT SHOP</h1>
+
+      <?php
+      if ($pid != "" ) {
+          include $pid;
+      } else {
+      if ($opcion && $opcion=='default') {
+        ?>
         <div class="body-imagen"></div>
-      <?php }?>
+        <?php
+       }
+      else if ($opcion && $opcion=='insertar'){
+        include "./presentacion/insert.php";
+      }
+      else if ($opcion && $opcion=='consultar'){
+        include "./presentacion/read.php";
+      }
+    }?>
       
     </div>
 
@@ -68,7 +90,7 @@ $("#opcion").change(function() {
     let url = "index.php?opcion=" + filas;
 	  location.replace(url);
   }else{
-    let url = "index.php"
+    let url = "index.php";
 	  location.replace(url);
   }
 });
